@@ -1,0 +1,14 @@
+//
+// Created by colom on 24/03/2021.
+//
+
+#ifndef TRANSACTIONMANAGEMENT_BANK_H
+#define TRANSACTIONMANAGEMENT_BANK_H
+
+
+class Bank {
+
+};
+
+
+#endif //TRANSACTIONMANAGEMENT_BANK_H
