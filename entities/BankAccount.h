@@ -21,8 +21,8 @@ public:
     std::string getId() const;
     User getUser() const;
     std::vector<Transaction> getListTransactions();
-    //double getBalance();
-    //std::string toString();
+    double getBalance();
+    std::string toString();
 };
 
 

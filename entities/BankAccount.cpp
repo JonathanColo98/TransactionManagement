@@ -3,6 +3,8 @@
 //
 
 #include "BankAccount.h"
+#include <sstream>
+#include <iostream>
 
 BankAccount::BankAccount(std::string id, User& userAccount, std::vector<Transaction> listTransactions, double balance) :user(userAccount) {
     this -> id = id;
@@ -23,5 +25,18 @@ std::vector<Transaction> BankAccount::getListTransactions() {
     return listTransactions;
 }
 
+double BankAccount::getBalance() {
+    return balance;
+}
 
+std::string BankAccount::toString() {
+    std::stringstream listOperations;
+
+    listOperations << "Id: " << id << " user" << user.toString() << " balance: " << balance << std::endl;
+    for (Transaction transaction : listTransactions) {
+        listOperations << transaction.toString() << std::endl;
+    }
+
+    return listOperations.str();
+}
 

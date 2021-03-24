@@ -24,7 +24,7 @@ std::string User::getTelephoneNumber() const {
 }
 
 std::string User::toString() {
-    std::cout << "Nominativo: "<< nominative << "E-mail: " << email << "Numero di telefono: " << telephoneNumber << std::endl;
+    return "[Nominativo: " + nominative + " E-mail: " + email + " Numero di telefono: ]" +  telephoneNumber;
 }
 
 
