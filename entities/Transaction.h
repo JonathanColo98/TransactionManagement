@@ -18,7 +18,7 @@ public:
     Transaction(std::string id, double amount, std::tm date);
     std::string getId() const;
     double getAmount() const;
-    std::tm getDate();
+    std::string getDate();
     std::string toString();
 };
 

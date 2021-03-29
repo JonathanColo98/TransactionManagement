@@ -34,8 +34,8 @@
 
 // GOOGLETEST_CM0001 DO NOT DELETE
 
-#ifndef GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_INTERNAL_H_
-#define GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_INTERNAL_H_
+#ifndef GTEST_INCLUDE_GTEST_INTERNAL_GTEST_INTERNAL_H_
+#define GTEST_INCLUDE_GTEST_INTERNAL_GTEST_INTERNAL_H_
 
 #include "gtest/internal/gtest-port.h"
 
@@ -895,16 +895,16 @@ template <typename T>
 class HasDebugStringAndShortDebugString {
  private:
   template <typename C>
-  static auto CheckDebugString(C*) -> typename std::is_same<
+  static constexpr auto CheckDebugString(C*) -> typename std::is_same<
       std::string, decltype(std::declval<const C>().DebugString())>::type;
   template <typename>
-  static std::false_type CheckDebugString(...);
+  static constexpr std::false_type CheckDebugString(...);
 
   template <typename C>
-  static auto CheckShortDebugString(C*) -> typename std::is_same<
+  static constexpr auto CheckShortDebugString(C*) -> typename std::is_same<
       std::string, decltype(std::declval<const C>().ShortDebugString())>::type;
   template <typename>
-  static std::false_type CheckShortDebugString(...);
+  static constexpr std::false_type CheckShortDebugString(...);
 
   using HasDebugStringType = decltype(CheckDebugString<T>(nullptr));
   using HasShortDebugStringType = decltype(CheckShortDebugString<T>(nullptr));
@@ -1557,4 +1557,4 @@ class NeverThrown {
               test_suite_name, test_name)>);                                  \
   void GTEST_TEST_CLASS_NAME_(test_suite_name, test_name)::TestBody()
 
-#endif  // GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_INTERNAL_H_
+#endif  // GTEST_INCLUDE_GTEST_INTERNAL_GTEST_INTERNAL_H_

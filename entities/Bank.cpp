@@ -11,7 +11,7 @@ Bank::Bank(std::string bankName, std::vector<BankAccount> listBankAccounts) {
 }
 
 std::string Bank::getBankName() const {
-    return !bankName.empty() ? bankName : "";
+    return bankName;
 }
 
 std::vector<BankAccount> Bank::getListBankAccounts() const {

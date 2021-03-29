@@ -1,12 +1,9 @@
-//
-// Created by colom on 24/03/2021.
-//
 
 #include "BankAccount.h"
 #include <sstream>
 #include <iostream>
 
-BankAccount::BankAccount(std::string id, User& userAccount, std::vector<Transaction> listTransactions, double balance) :user(userAccount) {
+BankAccount::BankAccount(std::string id, const User& userAccount, std::vector<Transaction> listTransactions, double balance) :user(userAccount) {
     this -> id = id;
     this -> user = user;
     this -> listTransactions = listTransactions;
@@ -14,7 +11,7 @@ BankAccount::BankAccount(std::string id, User& userAccount, std::vector<Transact
 }
 
 std::string BankAccount::getId() const {
-    return !id.empty() ? id : "empty field";
+    return id;
 }
 
 User BankAccount::getUser() const {
@@ -32,11 +29,12 @@ double BankAccount::getBalance() {
 std::string BankAccount::toString() {
     std::stringstream listOperations;
 
-    listOperations << "Id: " << id << " user" << user.toString() << " balance: " << balance << std::endl;
+
+    listOperations << "[Id: " << id << " Utente:" << user.toString() << " Saldo: " << balance << std::endl;
     for (Transaction transaction : listTransactions) {
         listOperations << transaction.toString() << std::endl;
     }
 
-    return listOperations.str();
+    return listOperations.str() + "]";
 }
 
