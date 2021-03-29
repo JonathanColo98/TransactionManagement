@@ -26,7 +26,6 @@ SUCCEED();
 Generates a success. This does **NOT** make the overall test succeed. A test is
 considered successful only if none of its assertions fail during its execution.
 
-{: .callout .note}
 NOTE: `SUCCEED()` is purely documentary and currently doesn't generate any
 user-visible output. However, we may add `SUCCEED()` messages to googletest's
 output in the future.
@@ -53,7 +52,6 @@ switch(expression) {
 }
 ```
 
-{: .callout .note}
 NOTE: you can only use `FAIL()` in functions that return `void`. See the
 [Assertion Placement section](#assertion-placement) for more information.
 
@@ -101,6 +99,7 @@ If you already have a function or functor that returns `bool` (or a type that
 can be implicitly converted to `bool`), you can use it in a *predicate
 assertion* to get the function arguments printed for free:
 
+<!-- mdformat off(github rendering does not support multiline tables) -->
 
 | Fatal assertion                   | Nonfatal assertion                | Verifies                    |
 | --------------------------------- | --------------------------------- | --------------------------- |
@@ -108,6 +107,7 @@ assertion* to get the function arguments printed for free:
 | `ASSERT_PRED2(pred2, val1, val2)` | `EXPECT_PRED2(pred2, val1, val2)` | `pred2(val1, val2)` is true |
 | `...`                             | `...`                             | `...`                       |
 
+<!-- mdformat on -->
 In the above, `predn` is an `n`-ary predicate function or functor, where `val1`,
 `val2`, ..., and `valn` are its arguments. The assertion succeeds if the
 predicate returns `true` when applied to the given arguments, and fails
@@ -145,7 +145,6 @@ b is 4
 c is 10
 ```
 
-{: .callout .note}
 > NOTE:
 >
 > 1.  If you see a compiler error "no matching function to call" when using
@@ -330,22 +329,26 @@ want to learn more, see
 
 #### Floating-Point Macros
 
+<!-- mdformat off(github rendering does not support multiline tables) -->
 
 | Fatal assertion                 | Nonfatal assertion              | Verifies                                 |
 | ------------------------------- | ------------------------------- | ---------------------------------------- |
 | `ASSERT_FLOAT_EQ(val1, val2);`  | `EXPECT_FLOAT_EQ(val1, val2);`  | the two `float` values are almost equal  |
 | `ASSERT_DOUBLE_EQ(val1, val2);` | `EXPECT_DOUBLE_EQ(val1, val2);` | the two `double` values are almost equal |
 
+<!-- mdformat on -->
 
 By "almost equal" we mean the values are within 4 ULP's from each other.
 
 The following assertions allow you to choose the acceptable error bound:
 
+<!-- mdformat off(github rendering does not support multiline tables) -->
 
 | Fatal assertion                       | Nonfatal assertion                    | Verifies                                                                         |
 | ------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------------- |
 | `ASSERT_NEAR(val1, val2, abs_error);` | `EXPECT_NEAR(val1, val2, abs_error);` | the difference between `val1` and `val2` doesn't exceed the given absolute error |
 
+<!-- mdformat on -->
 
 #### Floating-Point Predicate-Format Functions
 
@@ -370,11 +373,13 @@ validating arguments passed to mock objects. A gMock *matcher* is basically a
 predicate that knows how to describe itself. It can be used in these assertion
 macros:
 
+<!-- mdformat off(github rendering does not support multiline tables) -->
 
 | Fatal assertion                | Nonfatal assertion             | Verifies              |
 | ------------------------------ | ------------------------------ | --------------------- |
 | `ASSERT_THAT(value, matcher);` | `EXPECT_THAT(value, matcher);` | value matches matcher |
 
+<!-- mdformat on -->
 
 For example, `StartsWith(prefix)` is a matcher that matches a string starting
 with `prefix`, and you can write:
@@ -511,7 +516,6 @@ any assertion inside of it.
 If changing the function's type is not an option, you should just use assertions
 that generate non-fatal failures, such as `ADD_FAILURE*` and `EXPECT_*`.
 
-{: .callout .note}
 NOTE: Constructors and destructors are not considered void-returning functions,
 according to the C++ language specification, and so you may not use fatal
 assertions in them; you'll get a compilation error if you try. Instead, either
@@ -519,7 +523,6 @@ call `abort` and crash the entire test executable, or put the fatal assertion in
 a `SetUp`/`TearDown` function; see
 [constructor/destructor vs. `SetUp`/`TearDown`](faq.md#CtorVsSetUp)
 
-{: .callout .warning}
 WARNING: A fatal assertion in a helper function (private void-returning method)
 called from a constructor or destructor does not terminate the current test, as
 your intuition might suggest: it merely returns from the constructor or
@@ -650,7 +653,6 @@ to be an expression.
 As usual, the `ASSERT` variants abort the current test function, while the
 `EXPECT` variants do not.
 
-{: .callout .note}
 > NOTE: We use the word "crash" here to mean that the process terminates with a
 > *non-zero* exit status code. There are two possibilities: either the process
 > has called `exit()` or `_exit()` with a non-zero value, or it may be killed by
@@ -726,7 +728,6 @@ necessary.
 
 ### Death Test Naming
 
-{: .callout .important}
 IMPORTANT: We strongly recommend you to follow the convention of naming your
 **test suite** (not test) `*DeathTest` when it contains a death test, as
 demonstrated in the above example. The
@@ -908,7 +909,6 @@ handlers registered with `pthread_atfork(3)`.
 
 ## Using Assertions in Sub-routines
 
-{: .callout .note}
 Note: If you want to put a series of test assertions in a subroutine to check
 for a complex condition, consider using
 [a custom GMock matcher](gmock_cook_book.md#NewMatchers)
@@ -1136,7 +1136,6 @@ will output XML like this:
   ...
 ```
 
-{: .callout .note}
 > NOTE:
 >
 > *   `RecordProperty()` is a static member of the `Test` class. Therefore it
@@ -1224,7 +1223,6 @@ TEST_F(FooTest, Test2) {
 }
 ```
 
-{: .callout .note}
 NOTE: Though the above code declares `SetUpTestSuite()` protected, it may
 sometimes be necessary to declare it public, such as when using it with
 `TEST_P`.
@@ -1312,7 +1310,6 @@ and `testing::WithParamInterface<T>`. `T` can be any copyable type. If it's a
 raw pointer, you are responsible for managing the lifespan of the pointed
 values.
 
-{: .callout .note}
 NOTE: If your test fixture defines `SetUpTestSuite()` or `TearDownTestSuite()`
 they must be declared **public** rather than **protected** in order to use
 `TEST_P`.
@@ -1358,6 +1355,7 @@ for generating test parameters. They return what we call (surprise!) *parameter
 generators*. Here is a summary of them, which are all in the `testing`
 namespace:
 
+<!-- mdformat off(github rendering does not support multiline tables) -->
 
 | Parameter Generator                                                                       | Behavior                                                                                                          |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -1367,6 +1365,7 @@ namespace:
 | `Bool()`                                                                                  | Yields sequence `{false, true}`.                                                                                  |
 | `Combine(g1, g2, ..., gN)`                                                                | Yields all combinations (Cartesian product) as std\:\:tuples of the values generated by the `N` generators.       |
 
+<!-- mdformat on -->
 
 For more details, see the comments at the definitions of these functions.
 
@@ -1379,7 +1378,6 @@ INSTANTIATE_TEST_SUITE_P(InstantiationName,
                          testing::Values("meeny", "miny", "moe"));
 ```
 
-{: .callout .note}
 NOTE: The code above must be placed at global or namespace scope, not at
 function scope.
 
@@ -1430,8 +1428,8 @@ given test suite, whether their definitions come before or *after* the
 
 You can see [sample7_unittest.cc] and [sample8_unittest.cc] for more examples.
 
-[sample7_unittest.cc]: https://github.com/google/googletest/blob/master/googletest/samples/sample7_unittest.cc "Parameterized Test example"
-[sample8_unittest.cc]: https://github.com/google/googletest/blob/master/googletest/samples/sample8_unittest.cc "Parameterized Test example with multiple parameters"
+[sample7_unittest.cc]: ../googletest/samples/sample7_unittest.cc "Parameterized Test example"
+[sample8_unittest.cc]: ../googletest/samples/sample8_unittest.cc "Parameterized Test example with multiple parameters"
 
 ### Creating Value-Parameterized Abstract Tests
 
@@ -1468,7 +1466,6 @@ the test parameters. The function should accept one argument of type
 returns the value of `testing::PrintToString(GetParam())`. It does not work for
 `std::string` or C strings.
 
-{: .callout .note}
 NOTE: test names must be non-empty, unique, and may only contain ASCII
 alphanumeric characters. In particular, they
 [should not contain underscores](faq.md#why-should-test-suite-names-and-test-names-not-contain-underscore)
@@ -1501,13 +1498,13 @@ class MyTestSuite : public testing::TestWithParam<std::tuple<MyType, std::string
 INSTANTIATE_TEST_SUITE_P(
     MyGroup, MyTestSuite,
     testing::Combine(
-        testing::Values(MyType::MY_FOO, MyType::MY_BAR),
-        testing::Values("A", "B")),
+        testing::Values(MyType::VALUE_0, MyType::VALUE_1),
+        testing::ValuesIn("", "")),
     [](const testing::TestParamInfo<MyTestSuite::ParamType>& info) {
       std::string name = absl::StrCat(
-          std::get<0>(info.param) == MyType::MY_FOO ? "Foo" : "Bar",
+          std::get<0>(info.param) == MY_FOO ? "Foo" : "Bar", "_",
           std::get<1>(info.param));
-      absl::c_replace_if(name, [](char c) { return !std::isalnum(c); }, '');
+      absl::c_replace_if(name, [](char c) { return !std::isalnum(c); }, '_');
       return name;
     });
 ```
@@ -1582,7 +1579,7 @@ TYPED_TEST(FooTest, HasPropertyA) { ... }
 
 You can see [sample6_unittest.cc] for a complete example.
 
-[sample6_unittest.cc]: https://github.com/google/googletest/blob/master/googletest/samples/sample6_unittest.cc "Typed Test example"
+[sample6_unittest.cc]: ../googletest/samples/sample6_unittest.cc "Typed Test example"
 
 ## Type-Parameterized Tests
 
@@ -1807,7 +1804,6 @@ well, use one of the following macros instead:
   EXPECT_NONFATAL_FAILURE_ON_ALL_THREADS(statement, substring);
 ```
 
-{: .callout .note}
 NOTE: Assertions from multiple threads are currently not supported on Windows.
 
 For technical reasons, there are some caveats:
@@ -2026,7 +2022,7 @@ You can do so by adding one line:
 Now, sit back and enjoy a completely different output from your tests. For more
 details, see [sample9_unittest.cc].
 
-[sample9_unittest.cc]: https://github.com/google/googletest/blob/master/googletest/samples/sample9_unittest.cc "Event listener example"
+[sample9_unittest.cc]: ../googletest/samples/sample9_unittest.cc "Event listener example"
 
 You may append more than one listener to the list. When an `On*Start()` or
 `OnTestPartResult()` event is fired, the listeners will receive it in the order
@@ -2053,7 +2049,7 @@ by the former.
 
 See [sample10_unittest.cc] for an example of a failure-raising listener.
 
-[sample10_unittest.cc]: https://github.com/google/googletest/blob/master/googletest/samples/sample10_unittest.cc "Failure-raising listener example"
+[sample10_unittest.cc]: ../googletest/samples/sample10_unittest.cc "Failure-raising listener example"
 
 ## Running Test Programs: Advanced Options
 
@@ -2155,12 +2151,10 @@ class DISABLED_BarTest : public testing::Test { ... };
 TEST_F(DISABLED_BarTest, DoesXyz) { ... }
 ```
 
-{: .callout .note}
 NOTE: This feature should only be used for temporary pain-relief. You still have
 to fix the disabled tests at a later date. As a reminder, googletest will print
 a banner warning you if a test program contains any disabled tests.
 
-{: .callout .tip}
 TIP: You can easily count the number of disabled tests you have using
 `grep`. This number can be used as a metric for
 improving your test quality.
@@ -2558,7 +2552,6 @@ could generate this report:
 }
 ```
 
-{: .callout .important}
 IMPORTANT: The exact format of the JSON document is subject to change.
 
 ### Controlling How Failures Are Reported

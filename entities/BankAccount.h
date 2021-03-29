@@ -17,7 +17,7 @@ private:
     double balance;
 
 public:
-    BankAccount(std::string id, User &userAccount, std::vector<Transaction> listTransactions, double balance);
+    BankAccount(std::string id, const User& userAccount, std::vector<Transaction> listTransactions, double balance);
     std::string getId() const;
     User getUser() const;
     std::vector<Transaction> getListTransactions();

@@ -2,8 +2,8 @@
 // Created by colom on 24/03/2021.
 //
 
-#include "User.h"
 #include <iostream>
+#include "User.h"
 
 User::User(std::string nominative, std::string email, std::string telephoneNumber) {
     this -> nominative = nominative;
@@ -12,19 +12,19 @@ User::User(std::string nominative, std::string email, std::string telephoneNumbe
 }
 
 std::string User::getNominative() const {
-     !nominative.empty() ? nominative : "empty field";
+    return nominative;
 }
 
 std::string User::getEmail() const {
-    !email.empty() ? email : "empty field";
+    return email;
 }
 
 std::string User::getTelephoneNumber() const {
-    !telephoneNumber.empty() ? email : "empty field";
+    return telephoneNumber;
 }
 
 std::string User::toString() {
-    return "[Nominativo: " + nominative + " E-mail: " + email + " Numero di telefono: ]" +  telephoneNumber;
+    return "[Nominativo: " + nominative + " E-mail: " + email + " Numero di telefono: " +  telephoneNumber + "]";
 }
 
 
