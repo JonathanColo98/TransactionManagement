@@ -4,7 +4,6 @@
 #include "../entities/Transaction.h"
 #include <ctime>
 
-
 TEST(TransactionTest, ToStringTransactioTest) {
     struct tm nowlocal;
     nowlocal.tm_mon = 28;

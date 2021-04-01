@@ -1,6 +1,3 @@
-//
-// Created by colom on 24/03/2021.
-//
 
 #include <sstream>
 #include "Bank.h"
@@ -24,7 +21,7 @@ std::string Bank::toString() {
     streamBankAccounts << "[Nome Banca: " << bankName;
 
     for (BankAccount bankAccount : listBankAccounts) {
-        streamBankAccounts << bankAccount.toString() << std::endl;
+        streamBankAccounts << bankAccount.toString()<< std::endl;
     }
 
     return streamBankAccounts.str() + "]";

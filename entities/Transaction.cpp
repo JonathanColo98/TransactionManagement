@@ -1,9 +1,10 @@
 
 #include <iostream>
+#include <utility>
 #include "Transaction.h"
 
 Transaction::Transaction(std::string id, double amount, std::tm date) {
-    this -> id = id;
+    this -> id = std::move(id);
     this -> amount = amount;
     this -> date = date;
 }
@@ -16,7 +17,7 @@ double Transaction::getAmount() const {
     return amount;
 }
 
-std::string Transaction::getDate() {
+std::string Transaction::getDate() const {
     return std::to_string(date.tm_mon) + "/" + std::to_string(date.tm_mday)  + "/" + std::to_string(date.tm_year);
 }
 

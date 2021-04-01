@@ -1,14 +1,10 @@
-//
-// Created by colom on 24/03/2021.
-//
 
-#include <iostream>
 #include "User.h"
 
 User::User(std::string nominative, std::string email, std::string telephoneNumber) {
-    this -> nominative = nominative;
-    this -> email = email;
-    this -> telephoneNumber = telephoneNumber;
+    this -> nominative = std::move(nominative);
+    this -> email = std::move(email);
+    this -> telephoneNumber = std::move(telephoneNumber);
 }
 
 std::string User::getNominative() const {

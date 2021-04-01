@@ -1,6 +1,3 @@
-//
-// Created by colom on 24/03/2021.
-//
 
 #ifndef TRANSACTIONMANAGEMENT_BANKACCOUNT_H
 #define TRANSACTIONMANAGEMENT_BANKACCOUNT_H
@@ -17,11 +14,13 @@ private:
     double balance;
 
 public:
-    BankAccount(std::string id, const User& userAccount, std::vector<Transaction> listTransactions, double balance);
+    BankAccount(std::string id, User  userAccount, std::vector<Transaction> listTransactions, double balance);
     std::string getId() const;
     User getUser() const;
     std::vector<Transaction> getListTransactions();
-    double getBalance();
+    double getBalance() const;
+    bool setBalance(double newBalance);
+    bool addTransaction(Transaction transaction);
     std::string toString();
 };
 

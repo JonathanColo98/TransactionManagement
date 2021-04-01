@@ -1,6 +1,3 @@
-//
-// Created by colom on 24/03/2021.
-//
 
 #ifndef TRANSACTIONMANAGEMENT_TRANSACTION_H
 #define TRANSACTIONMANAGEMENT_TRANSACTION_H
@@ -18,8 +15,8 @@ public:
     Transaction(std::string id, double amount, std::tm date);
     std::string getId() const;
     double getAmount() const;
-    std::string getDate();
-    std::string toString();
+    std::string getDate() const;
+    std::string toString() ;
 };
 
 

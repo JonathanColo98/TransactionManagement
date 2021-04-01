@@ -1,6 +1,3 @@
-//
-// Created by colom on 24/03/2021.
-//
 
 #ifndef TRANSACTIONMANAGEMENT_USER_H
 #define TRANSACTIONMANAGEMENT_USER_H
