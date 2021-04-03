@@ -1,26 +1,36 @@
 
 #include "User.h"
 
-User::User(std::string nominative, std::string email, std::string telephoneNumber) {
-    this -> nominative = std::move(nominative);
-    this -> email = std::move(email);
-    this -> telephoneNumber = std::move(telephoneNumber);
-}
+#include <utility>
 
-std::string User::getNominative() const {
+User::User(std::string nominative, std::string email, std::string telephoneNumber) : nominative(std::move(
+        nominative)), email(std::move(email)), telephoneNumber(std::move(telephoneNumber)) {}
+
+const std::string &User::getNominative() const {
     return nominative;
 }
 
-std::string User::getEmail() const {
+const std::string &User::getEmail() const {
     return email;
 }
 
-std::string User::getTelephoneNumber() const {
+const std::string &User::getTelephoneNumber() const {
     return telephoneNumber;
+}
+
+std::ostream &operator<<(std::ostream &out, const User &obj) {
+    out << obj.nominative << "\n" << obj.email <<"\n"<< obj.telephoneNumber <<std::endl;
+    return out;
+}
+
+std::istream &operator>>(std::istream &in, const User &obj) {
+    in >> obj;
+    return in;
 }
 
 std::string User::toString() {
     return "[Nominativo: " + nominative + " E-mail: " + email + " Numero di telefono: " +  telephoneNumber + "]";
 }
+
 
 

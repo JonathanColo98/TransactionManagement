@@ -2,7 +2,6 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "../entities/Transaction.h"
-#include <ctime>
 
 TEST(TransactionTest, ToStringTransactioTest) {
     struct tm nowlocal;

@@ -1,51 +1,34 @@
 
 #include "ManagementUser.h"
-#include <iostream>
+#include <sstream>
 
-ManagementUser::ManagementUser(const User &user, std::ofstream writeFileUser, std::ifstream readFileUser) :user(user)  {
+ManagementUser::ManagementUser(const User &user, std::ofstream &outFileUser, std::ifstream &fileInUser) : user(user)  {
     this -> user = user;
-    this -> writeFileUser = dynamic_cast<std::basic_ofstream<char, std::char_traits<char>> &&>(writeFileUser);
-    this -> readFileUser = dynamic_cast<std::basic_ifstream<char, std::char_traits<char>> &&>(readFileUser);
+    this -> fileOutUser = dynamic_cast<std::basic_ofstream<char, std::char_traits<char>> &&>(outFileUser);
+    this -> fileInUser = dynamic_cast<std::basic_ifstream<char, std::char_traits<char>> &&>(fileInUser);
 }
 
-bool ManagementUser::openWriteToFile() {
-    writeFileUser.open("WriteUser.txt", std::ios_base::out | std::ios_base::trunc);
-    if (writeFileUser.is_open()) {
+bool ManagementUser::writeToFileUser() {
+    fileOutUser.open("user-output.txt", std::ios_base::out | std::ios_base::trunc);
+    if(fileOutUser.is_open()) {
+        fileOutUser << user;
+        fileOutUser.close();
         return true;
     } else {
         return false;
     }
 }
 
-bool ManagementUser::openReadToFile(std::ifstream readToFile) {
-    readToFile.open("ReadUser.txt", std::ios_base::in);
-    if (readToFile.is_open()) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-bool ManagementUser::writeToFileUser(std::ofstream writeToFile, User user) {
-    if(writeToFile.is_open()) {
-        writeToFile << "Information User" << std::endl;
-        writeToFile << user.toString();
-        writeToFile.close();
-        return true;
-    } else {
-        return false;
-    }
-}
-
-bool ManagementUser::readFromFileUser(std::ifstream readToFile, std::string textFromFile) {
-    if(readToFile.is_open()) {
-        while (readToFile.good()) {
-            std::getline(readToFile, textFromFile);
-            std::cout << textFromFile << std::endl;
+bool ManagementUser::readFromFileUser() {
+    fileInUser.open("user-input.txt", std::ios_base::in);
+    if(fileInUser.is_open()) {
+        while (fileInUser.good()) {
+            fileInUser >> user;
         }
-        readToFile.close();
+        fileInUser.close();
         return true;
     } else {
         return false;
     }
 }
+
