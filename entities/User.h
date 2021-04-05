@@ -24,16 +24,17 @@ public:
 
     std::string toString();
 
-    /*
-     * Write the member variables to stream objects
-     */
-    friend std::ostream & operator << (std::ostream &out, const User & obj);
+    friend std::ostream & operator << (std::ostream &out, const User & obj) {
+        out << obj.nominative << "\n" << obj.email <<"\n"<< obj.telephoneNumber <<std::endl;
+        return out;
+    }
 
-    /*
-     * Read data from stream object and fill it in member variables
-     */
-
-    friend std::istream & operator >> (std::istream &in, const User &obj);
+    friend std::istream & operator >> (std::istream &in, User &obj) {
+        in >> obj.nominative;
+        in >> obj.email;
+        in >> obj.telephoneNumber;
+        return in;
+    }
 };
 
 
