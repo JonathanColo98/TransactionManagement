@@ -1,7 +1,6 @@
 
 #include "BankAccount.h"
 #include <sstream>
-#include <utility>
 
 BankAccount::BankAccount(std::string id, User user, std::vector<Transaction> listTransactions,
                          double balance) : id(std::move(id)), user(std::move(user)), listTransactions(std::move(listTransactions)), balance(balance) {}
