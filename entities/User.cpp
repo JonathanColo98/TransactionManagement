@@ -18,16 +18,6 @@ const std::string &User::getTelephoneNumber() const {
     return telephoneNumber;
 }
 
-std::ostream &operator<<(std::ostream &out, const User &obj) {
-    out << obj.nominative << "\n" << obj.email <<"\n"<< obj.telephoneNumber <<std::endl;
-    return out;
-}
-
-std::istream &operator>>(std::istream &in, const User &obj) {
-    in >> obj;
-    return in;
-}
-
 std::string User::toString() {
     return "[Nominativo: " + nominative + " E-mail: " + email + " Numero di telefono: " +  telephoneNumber + "]";
 }

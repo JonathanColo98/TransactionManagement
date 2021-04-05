@@ -22,11 +22,6 @@ double BankAccount::getBalance() const {
     return balance;
 }
 
-std::ostream &operator<<(std::ostream &out, const BankAccount &obj) {
-    out << obj.id << "\n" << obj.user << "\n" << obj.getListTransactionsToString() << "\n" << obj.balance  << std::endl;
-    return out;
-}
-
 std::string BankAccount::getListTransactionsToString() const {
     std::stringstream listOperations;
 
@@ -35,11 +30,6 @@ std::string BankAccount::getListTransactionsToString() const {
     }
 
     return listOperations.str();
-}
-
-std::istream &operator>>(std::istream &in, const BankAccount &obj) {
-    in >> obj;
-    return in;
 }
 
 bool BankAccount::addTransaction(const Transaction& transaction) {
@@ -66,6 +56,7 @@ std::string BankAccount::toString() {
 
     return listOperations.str() + "]";
 }
+
 
 
 

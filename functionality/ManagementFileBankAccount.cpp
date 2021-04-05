@@ -7,11 +7,11 @@
 ManagementFileBankAccount::ManagementFileBankAccount(BankAccount bankAccount) : bankAccount(std::move(bankAccount)) {}
 
 bool ManagementFileBankAccount::withdraw(const Transaction& transaction) {
-    if (bankAccount.getBalance() < transaction.getAmount()) {
-        std::cout << "Balance minor of amount";
+    if (bankAccount.getBalance() < transaction.getAmount() || transaction.getAmount() <= 0) {
         return false;
     } else {
         bankAccount.setNewBalance(bankAccount.getBalance() - transaction.getAmount());
+        bankAccount.addTransaction(transaction);
         return true;
     }
 }
@@ -21,12 +21,13 @@ bool ManagementFileBankAccount::deposit(const Transaction& transaction) {
         return false;
     } else {
         bankAccount.setNewBalance(bankAccount.getBalance() + transaction.getAmount());
+        bankAccount.addTransaction(transaction);
         return true;
     }
 }
 
 bool ManagementFileBankAccount::writeToFileBankAccount(std::ofstream &fileOutBankAccount) {
-    fileOutBankAccount.open("BankAccountOutput.txt", std::ios_base::out | std::ios_base::trunc);
+    fileOutBankAccount.open("bank-account.txt", std::ios_base::out | std::ios_base::trunc);
 
     if(fileOutBankAccount.is_open()) {
         fileOutBankAccount << bankAccount;
@@ -38,17 +39,16 @@ bool ManagementFileBankAccount::writeToFileBankAccount(std::ofstream &fileOutBan
 }
 
 bool ManagementFileBankAccount::readFromFileBankAccount(std::ifstream &fileInBankAccount) {
-    fileInBankAccount.open("BankAccountInput.txt", std::ios_base::in);
+    fileInBankAccount.open("bank-account.txt", std::ios_base::in);
 
-    if(fileInBankAccount.is_open()) {
-        while (fileInBankAccount.good()) {
-            fileInBankAccount >> bankAccount;
-        }
+    if (fileInBankAccount.good()) {
+        fileInBankAccount >> bankAccount;
         fileInBankAccount.close();
         return true;
     } else {
         return false;
     }
+
 }
 
 
