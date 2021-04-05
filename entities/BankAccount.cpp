@@ -14,7 +14,7 @@ User BankAccount::getUser() const {
     return user;
 }
 
-std::vector<Transaction> BankAccount::getListTransactions() {
+std::vector<Transaction> BankAccount::getListTransactions() const {
     return listTransactions;
 }
 

@@ -1,7 +1,6 @@
 
 #include "ManagementFileUser.h"
 #include <sstream>
-#include <utility>
 
 ManagementFileUser::ManagementFileUser(User user) : user(std::move(user)) {}
 
@@ -27,7 +26,6 @@ bool ManagementFileUser::readFromFileUser(std::ifstream &fileInUser) {
     } else {
         return false;
     }
-
 }
 
 

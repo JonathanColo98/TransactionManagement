@@ -14,7 +14,7 @@ private:
     std::tm date;
 
 public:
-    Transaction(const std::string &id, double amount, const tm &date);
+    Transaction(std::string id, double amount, const tm &date);
 
     const std::string &getId() const;
 
@@ -44,7 +44,7 @@ public:
         return in;
     }
 
-    std::string Transaction::getDateToString() const;
+    std::string getDateToString() const;
 
     std::string toString();
 

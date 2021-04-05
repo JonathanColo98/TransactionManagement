@@ -22,7 +22,7 @@ public:
 
     User getUser() const;
 
-    std::vector<Transaction> getListTransactions();
+    std::vector<Transaction> getListTransactions() const;
 
     double getBalance() const;
 
@@ -49,7 +49,7 @@ public:
         std::vector<Transaction> data;
         struct tm nowlocal;
 
-        Transaction element("",0,nowlocal);
+        Transaction element("",0, nowlocal);
 
         while (in >> element) {
             data.push_back(element);

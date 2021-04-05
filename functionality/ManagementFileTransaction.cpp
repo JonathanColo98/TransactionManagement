@@ -1,10 +1,5 @@
-//
-// Created by colom on 05/04/2021.
-//
 
 #include "ManagementFileTransaction.h"
-
-#include <utility>
 
 ManagementFileTransaction::ManagementFileTransaction(Transaction transaction) : transaction(std::move(transaction)) {}
 

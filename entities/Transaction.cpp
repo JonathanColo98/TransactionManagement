@@ -3,8 +3,7 @@
 #include <string>
 
 
-
-Transaction::Transaction(const std::string &id, double amount, const tm &date) : id(id), amount(amount), date(date) {}
+Transaction::Transaction(std::string id, double amount, const tm &date) : id(std::move(id)), amount(amount), date(date) {}
 
 const std::string &Transaction::getId() const {
     return id;

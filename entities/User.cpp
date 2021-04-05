@@ -1,8 +1,6 @@
 
 #include "User.h"
 
-#include <utility>
-
 User::User(std::string nominative, std::string email, std::string telephoneNumber) : nominative(std::move(
         nominative)), email(std::move(email)), telephoneNumber(std::move(telephoneNumber)) {}
 
