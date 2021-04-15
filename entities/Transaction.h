@@ -22,6 +22,14 @@ public:
 
     const tm &getDate() const;
 
+    friend bool operator == (const Transaction& leftUser, const Transaction& rightUser) {
+        return leftUser.id == rightUser.id &&
+               leftUser.amount == rightUser.amount &&
+               leftUser.date.tm_mon == rightUser.date.tm_mon &&
+               leftUser.date.tm_mday == leftUser.date.tm_year &&
+               leftUser.date.tm_year == rightUser.date.tm_year;
+    }
+
     /*
      * Write the member variables to stream objects
      */

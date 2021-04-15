@@ -24,17 +24,27 @@ public:
 
     std::string toString();
 
-    friend std::ostream & operator << (std::ostream &out, const User & obj) {
+    friend bool operator == (const User& leftUser, const User& rightUser) {
+        return leftUser.nominative == rightUser.nominative &&
+               leftUser.email == rightUser.email &&
+               leftUser.telephoneNumber == rightUser.telephoneNumber;
+    }
+
+    friend std::ostream& operator << (std::ostream &out, const User& obj) {
         out << obj.nominative << "\n" << obj.email <<"\n"<< obj.telephoneNumber <<std::endl;
         return out;
     }
 
-    friend std::istream & operator >> (std::istream &in, User &obj) {
+    friend std::istream& operator >> (std::istream &in, User &obj) {
         in >> obj.nominative;
         in >> obj.email;
         in >> obj.telephoneNumber;
         return in;
     }
+
+    bool writeToFileUser(std::ofstream &fileOutUser, const User& user);
+
+    bool readFromFileUser(std::ifstream &fileInUser);
 };
 
 

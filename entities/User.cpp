@@ -22,5 +22,35 @@ std::string User::toString() {
     return "[Nominativo: " + nominative + " E-mail: " + email + " Numero di telefono: " +  telephoneNumber + "]";
 }
 
+bool User::writeToFileUser(std::ofstream &fileOutUser, const User& user) {
+    fileOutUser.open("user.txt", std::ios_base::out | std::ios_base::trunc);
+
+    if(fileOutUser.is_open()) {
+        fileOutUser << user;
+        fileOutUser.close();
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool User::readFromFileUser(std::ifstream &fileInUser) {
+    fileInUser.open("user.txt", std::ios_base::in);
+
+    if(fileInUser.good()) {
+        fileInUser >> nominative;
+        fileInUser >> email;
+        fileInUser >> telephoneNumber;
+        User userReadFromFile = User(nominative,email,telephoneNumber);
+        fileInUser.close();
+        // restituire user
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+
 
 

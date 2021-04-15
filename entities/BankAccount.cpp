@@ -3,7 +3,7 @@
 #include <sstream>
 #include <utility>
 
-BankAccount::BankAccount(std::string id, User user, std::vector<Transaction> listTransactions,
+BankAccount::BankAccount(std::string id, User user, std::list<Transaction> listTransactions,
                          double balance) : id(std::move(id)), user(std::move(user)), listTransactions(std::move(listTransactions)), balance(balance) {}
 
 const std::string &BankAccount::getId() const {
@@ -14,7 +14,7 @@ User BankAccount::getUser() const {
     return user;
 }
 
-std::vector<Transaction> BankAccount::getListTransactions() {
+std::list<Transaction> BankAccount::getListTransactions() {
     return listTransactions;
 }
 

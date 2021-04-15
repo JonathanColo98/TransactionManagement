@@ -2,8 +2,6 @@
 #include "Transaction.h"
 #include <string>
 
-
-
 Transaction::Transaction(const std::string &id, double amount, const tm &date) : id(id), amount(amount), date(date) {}
 
 const std::string &Transaction::getId() const {
@@ -25,4 +23,5 @@ std::string Transaction::getDateToString() const {
 std::string Transaction::toString() {
     return "[Id Transazione: " + id + " Importo: " + std::to_string(amount) + " Data[Giorno/Mese/Anno]: "+ getDateToString() +"]";
 }
+
 

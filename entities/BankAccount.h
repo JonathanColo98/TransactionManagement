@@ -4,29 +4,36 @@
 
 #include "User.h"
 #include "Transaction.h"
-#include <vector>
+#include <list>
 
 class BankAccount {
 
 private:
     std::string id;
     User user;
-    std::vector<Transaction> listTransactions = {};
+    std::list<Transaction> listTransactions = {};
     double balance;
 
 public:
-    BankAccount(std::string id, User user, std::vector<Transaction> listTransactions,
+    BankAccount(std::string id, User user, std::list<Transaction> listTransactions,
                 double balance);
 
     const std::string &getId() const;
 
     User getUser() const;
 
-    std::vector<Transaction> getListTransactions();
+    std::list<Transaction> getListTransactions();
 
     double getBalance() const;
 
     std::string BankAccount::getListTransactionsToString() const;
+
+    friend bool operator == (const BankAccount& leftBankAccount, const BankAccount& rightBankAccount) {
+        return leftBankAccount.id == rightBankAccount.id &&
+               leftBankAccount.user == rightBankAccount.user &&
+               leftBankAccount.listTransactions == rightBankAccount.listTransactions &&
+               leftBankAccount.balance == rightBankAccount.balance;
+    }
 
     /*
     * Write the member variables to stream objects
@@ -46,7 +53,7 @@ public:
         in >> obj.user;
         in >> obj.balance;
 
-        std::vector<Transaction> data;
+        std::list<Transaction> data;
         struct tm nowlocal;
 
         Transaction element("",0,nowlocal);

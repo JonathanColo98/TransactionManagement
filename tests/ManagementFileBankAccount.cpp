@@ -4,7 +4,7 @@
 
 TEST(ManagementFileBankAccountTest, WriteToFileCorrectly) {
     User userObjectTest("Nome Utente", "nome.utente@email.it", "3645645665");
-    std::vector<Transaction> listTransactionsTest = {};
+    std::list<Transaction> listTransactionsTest = {};
     BankAccount bankAccountObject("123", userObjectTest, listTransactionsTest, 1000.0);
     std::ofstream fileOutBankAccountTest;
     struct tm nowlocal;
@@ -19,7 +19,7 @@ TEST(ManagementFileBankAccountTest, WriteToFileCorrectly) {
 
 TEST(ManagementFileBankAccountTest, ReadToFileCorrectly) {
     User userObjectTest("Nome Utente", "nome.utente@email.it", "3645645665");
-    std::vector<Transaction> listTransactionsTest = {};
+    std::list<Transaction> listTransactionsTest = {};
     BankAccount bankAccountObject("123", userObjectTest, listTransactionsTest, 1000.0);
     std::ifstream fileInBankAccountTest;
     std::ofstream fileOutBankAccountTest;
@@ -42,7 +42,7 @@ TEST(ManagementFileBankAccountTest, ReadToFileCorrectly) {
 
 TEST(ManagementFileBankAccountTest, WithdrawTransactionTestTrue) {
     User userObjectTest("Nome Utente", "nome.utente@email.it", "3645645665");
-    std::vector<Transaction> listTransactionsTest = {};
+    std::list<Transaction> listTransactionsTest = {};
     BankAccount bankAccountObject("123", userObjectTest, listTransactionsTest, 1000.0);
     ManagementFileBankAccount managementFileBankAccountTest(bankAccountObject);
     struct tm nowlocal;
@@ -55,7 +55,7 @@ TEST(ManagementFileBankAccountTest, WithdrawTransactionTestTrue) {
 
 TEST(ManagementFileBankAccountTest, WithdrawTransactionTestFalse) {
     User userObjectTest("Nome Utente", "nome.utente@email.it", "3645645665");
-    std::vector<Transaction> listTransactionsTest = {};
+    std::list<Transaction> listTransactionsTest = {};
     BankAccount bankAccountObject("123", userObjectTest, listTransactionsTest, 1000.0);
     ManagementFileBankAccount managementFileBankAccountTest(bankAccountObject);
     struct tm nowlocal;
@@ -70,7 +70,7 @@ TEST(ManagementFileBankAccountTest, WithdrawTransactionTestFalse) {
 
 TEST(ManagementFileBankAccountTest, DepositTransactionTestTrue) {
     User userObjectTest("Nome Utente", "nome.utente@email.it", "3645645665");
-    std::vector<Transaction> listTransactionsTest = {};
+    std::list<Transaction> listTransactionsTest = {};
     BankAccount bankAccountObject("123", userObjectTest, listTransactionsTest, 1000.0);
     ManagementFileBankAccount managementFileBankAccountTest(bankAccountObject);
     struct tm nowlocal;
@@ -83,7 +83,7 @@ TEST(ManagementFileBankAccountTest, DepositTransactionTestTrue) {
 
 TEST(ManagementFileBankAccountTest, DepositTransactionTestFalse) {
     User userObjectTest("Nome Utente", "nome.utente@email.it", "3645645665");
-    std::vector<Transaction> listTransactionsTest = {};
+    std::list<Transaction> listTransactionsTest = {};
     BankAccount bankAccountObject("123", userObjectTest, listTransactionsTest, 1000.0);
     ManagementFileBankAccount managementFileBankAccountTest(bankAccountObject);
     struct tm nowlocal;
