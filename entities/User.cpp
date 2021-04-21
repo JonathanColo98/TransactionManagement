@@ -34,7 +34,7 @@ bool User::writeToFileUser(std::ofstream &fileOutUser, const User& user) {
     }
 }
 
-bool User::readFromFileUser(std::ifstream &fileInUser) {
+User User::readFromFileUser(std::ifstream &fileInUser) {
     fileInUser.open("user.txt", std::ios_base::in);
 
     if(fileInUser.good()) {
@@ -43,10 +43,10 @@ bool User::readFromFileUser(std::ifstream &fileInUser) {
         fileInUser >> telephoneNumber;
         User userReadFromFile = User(nominative,email,telephoneNumber);
         fileInUser.close();
-        // restituire user
-        return true;
+        return userReadFromFile;
     } else {
-        return false;
+        User userObjectEmpty("", "", "");
+        return userObjectEmpty;
     }
 
 }

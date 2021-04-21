@@ -21,6 +21,7 @@ TEST(ManagementUserTest, ReadToFileCorrectly) {
         fileOutUserTest << userObjectTest;
         fileOutUserTest.close();
     }
+    User userObjectTest2("","","");
 
     ASSERT_TRUE(managementUserTest.readFromFileUser(fileInUserTest));
 }

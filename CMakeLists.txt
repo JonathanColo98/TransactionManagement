@@ -3,7 +3,7 @@ project(TransactionManagement)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(TransactionManagement main.cpp entities/BankAccount.cpp entities/BankAccount.h entities/Transaction.cpp entities/Transaction.h entities/User.cpp entities/User.h tests/UserTest.cpp tests/TransactionTest.cpp tests/BankAccountTest.cpp functionality/ManagementFileUser.cpp functionality/ManagementFileUser.h functionality/ManagementFileBankAccount.cpp functionality/ManagementFileBankAccount.h tests/ManagementFileBankAccount.cpp tests/ManagementUserTest.cpp functionality/ManagementFileTransaction.cpp functionality/ManagementFileTransaction.h tests/ManagementTransactionTest.cpp)
+add_executable(TransactionManagement main.cpp entities/BankAccount.cpp entities/BankAccount.h entities/Transaction.cpp entities/Transaction.h entities/User.cpp entities/User.h tests/UserTest.cpp tests/TransactionTest.cpp tests/BankAccountTest.cpp functionality/ManagementFileUser.cpp functionality/ManagementFileUser.h functionality/ManagementFileBankAccount.cpp functionality/ManagementFileBankAccount.h tests/ManagementFileBankAccount.cpp tests/ManagementUserTest.cpp)
 
 add_subdirectory(lib/googletest-master)
 include_directories(lib/googletest-master/googletest/include)

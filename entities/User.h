@@ -42,9 +42,9 @@ public:
         return in;
     }
 
-    bool writeToFileUser(std::ofstream &fileOutUser, const User& user);
+    static bool writeToFileUser(std::ofstream &fileOutUser, const User& user);
 
-    bool readFromFileUser(std::ifstream &fileInUser);
+    User readFromFileUser(std::ifstream &fileInUser);
 };
 
 

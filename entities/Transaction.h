@@ -56,6 +56,10 @@ public:
 
     std::string toString();
 
+    bool writeToFileTransaction(std::ofstream &fileOutTransaction, const Transaction &transaction);
+
+    Transaction readFromFileTransaction(std::ifstream &fileInTransaction);
+
 };
 
 
